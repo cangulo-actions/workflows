@@ -1,0 +1,16 @@
+name: Calculate Next Release Number
+
+on:
+  workflow_dispatch:
+  pull_request:
+    types: [opened, synchronize]
+
+
+jobs:
+  call-calculate-next-release-number-workflow:
+    name: Calculate Next Release Number
+    uses: cangulo-actions/workflows/.github/workflows/calculate-next-release-number.yml@main
+    with:
+      releaseSettingsPath: ./cicd/releaseSettings.json
+    secrets:
+      token: ${{ secrets.GITHUB_TOKEN }}
