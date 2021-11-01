@@ -1,0 +1,21 @@
+name: Calculate Next Release Number
+
+on:
+  workflow_call:
+    inputs:
+      releaseSettingsPath:
+        required: true
+        type: string
+
+jobs:
+  calculate-next-release-number:
+    name: Calculate Next Release Number
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Calculating Next Release Version
+        uses: cangulo-actions/cangulo.nuke.releasecreator@v0.0.1
+        with:
+          releaseSettingsPath: ${{ inputs.releaseSettingsPath }}
+          onlyCalculateReleaseNumber: true

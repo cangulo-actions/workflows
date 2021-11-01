@@ -1,0 +1,21 @@
+name: Validating Commits
+
+on:
+  workflow_call:
+    inputs:
+      validationSettingsPath:
+        required: true
+        type: string
+
+
+jobs:
+  validate-commits:
+    name: Validating Commits
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Validating PR commits
+        uses: cangulo-actions/cangulo.nuke.prcommitsvalidations@v0.0.1
+        with:
+          validationSettingsPath: ${{ inputs.validationSettingsPath }}
