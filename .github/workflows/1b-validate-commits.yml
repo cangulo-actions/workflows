@@ -1,0 +1,15 @@
+name: Validating Commits
+
+on:
+  workflow_dispatch:
+  pull_request:
+    types: [opened, synchronize]
+
+
+jobs:
+  call-validate-commits-workflow:
+    name: Validating Commits
+    uses: cangulo-actions/workflows/.github/exported-workflows/validate-commits.yml@main
+    if: github.event_name == 'pull_request'
+    with:
+      validationSettingsPath: ./cicd/prCommitValidationSettings.json

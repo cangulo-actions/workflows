@@ -1,0 +1,16 @@
+name: Release New Version
+
+on:
+  workflow_dispatch:
+  pull_request:
+    types: [closed]
+    branches: [main]
+
+jobs:
+  call-release-new-version-workflow:
+    name: Releasing new version
+    uses: cangulo-actions/workflows/.github/exported-workflows/release-new-version.yml@main
+    if: github.event_name == 'pull_request'
+    with:
+      releaseSettingsPath: ./cicd/releaseSettings.json
+      token: ${{ secrets.ACCESS_PUBLIC_REPOS }}
