@@ -1,6 +1,6 @@
 # cangulo workflows
 
-## Workflwos based on [NUKE](https://nuke.build)
+## Workflows based on [NUKE](https://nuke.build)
 * ### [Calculate Next Release Number](.github/workflows/calculate-next-release-number.yml):
   * Calculate the next release number based on the conventional commits provided in the PR which triggers the workflow
   * Conventional Commits settings should be provided following the gh action: [cangulo.nuke.releasecreator](https://github.com/cangulo-actions/cangulo.nuke.releasecreator)
